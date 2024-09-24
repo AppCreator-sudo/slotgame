@@ -1,7 +1,5 @@
 {
-  "url": "<app-url>",                        // required
-  "name": "<app-name>",                      // required
-  "iconUrl": "<app-icon-url>",               // required
-  "termsOfUseUrl": "<terms-of-use-url>",     // optional
-  "privacyPolicyUrl": "<privacy-policy-url>" // optional
+  "url": "aappcreator-sudo-slotgame-63ef.twc1.ne",
+  "name": "Slot game",
+  "iconUrl": "https://github.com/ton-connect/sdk/blob/main/assets/ton-icon-48.png"
 }
