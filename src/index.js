@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { App } from './App';
+
 
 // Проверка, если SDK Telegram недоступен (например, при локальной разработке)
 if (!window.Telegram) {

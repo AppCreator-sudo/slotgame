@@ -3,10 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegram Slot Game</title>
+  <title>Слот Игра</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="root"></div>
-<script src="https://telegram.org/js/telegram-web-app.js"></script> <!-- Подключение SDK -->
+<div class="slot-machine">
+  <div class="slots">
+    <div class="slot" id="slot1">1</div>
+    <div class="slot" id="slot2">2</div>
+    <div class="slot" id="slot3">3</div>
+  </div>
+  <button id="spin-button">Вращать</button>
+</div>
+
+<!-- Popup для выигрыша или проигрыша -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span id="popup-message"></span>
+    <button id="close-popup">Закрыть</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
