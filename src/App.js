@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import SlotMachine from './components/SlotMachine';
+import TonConnectButton from './components/TonConnectButton';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
+
+const ChipsBalance = styled.div`
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+`;
 
 function App() {
+  const [chips, setChips] = useState(100); // Начальный баланс фишек
+
+  const handlePurchase = () => {
+    // Логика покупки фишек через TON Connect
+    // Например, увеличиваем баланс фишек
+    setChips(chips + 50);
+    alert('Вы приобрели 50 фишек!');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AppContainer>
+        <h1>Слот-Машина</h1>
+        <ChipsBalance>Фишки: {chips}</ChipsBalance>
+        <SlotMachine />
+        <TonConnectButton onPurchase={handlePurchase} />
+      </AppContainer>
   );
 }
 
