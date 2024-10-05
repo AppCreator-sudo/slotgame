@@ -1,78 +1,124 @@
-/* Стиль для основного тела страницы */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f7f7f7;
+* {
+    -webkit-tap-highlight-color: transparent; /* Убираем цвет выделения при нажатии */
+}
+/* Устанавливаем фиксированный размер для body и html */
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Отключаем прокрутку */
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 
-/* Стили для слот-машины */
+/* Контейнер слот машины */
 .slot-machine {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 80px); /* Учитываем отступы по 40px с каждой стороны */
+    max-width: 400px; /* Ограничиваем максимальную ширину */
+    height: 300px; /* Задаем высоту блока (можете настроить под свои нужды) */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    margin: 0; /* Убираем внешний отступ */
 }
 
 .slots {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .slot {
-    width: 60px;
-    height: 60px;
-    background-color: #ddd;
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 10px;
+    width: calc(30% - 10px); /* Уменьшаем ширину слота на 10px для учета отступов */
+    height: 100px; /* Задайте фиксированную высоту для слота */
+    display: flex; /* Используем flexbox для центрирования */
+    align-items: center; /* Центрируем содержимое по вертикали */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    text-align: center;
+    font-size: 3rem; /* Увеличьте размер шрифта для значков */
+    line-height: 1; /* Установите высоту строки, чтобы избежать лишнего пространства */
+    background-color: #ffffff;
+    padding: 10px; /* Уменьшите внутренний отступ, если необходимо */
+    border-radius: 30px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    margin: 5px; /* Добавляем отступы по 5px со всех сторон */
 }
 
-/* Стиль для кнопки */
 button {
+    margin-top: 40px;
     padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
+    font-size: 1.8rem;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 30px;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
-button:disabled {
-    background-color: #bbb;
-    cursor: not-allowed;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Стили для модального окна (popup) */
+/* Popup */
 .popup {
-    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 50%; /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translate(-50%, -50%) translateY(-100%); /* Начальное положение: выше центра */
+    display: none; /* Скрываем popup по умолчанию */
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    opacity: 0; /* Начальная непрозрачность */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Плавный переход */
+    border-radius: 30px; /* Закругление углов для самого popup */
+    width: 100%; /* Задаем ширину для заполнения экрана */
+    max-width: 400px; /* Максимальная ширина для popup */
+}
+
+.popup.active {
+    display: flex; /* Отображаем popup */
+    transform: translate(-50%, -50%) translateY(0); /* Перемещение к центру */
+    opacity: 1; /* Полная непрозрачность при активации */
 }
 
 .popup-content {
     background-color: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px; /* Закругление углов для содержимого popup */
     text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Задаем ширину для содержимого */
+    max-width: 160px; /* Максимальная ширина для содержимого */
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 #close-popup {
     margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #dc3545;
+    padding: 5px 10px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;

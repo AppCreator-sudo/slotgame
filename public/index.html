@@ -5,25 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Слот Игра</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <div class="slot-machine">
   <div class="slots">
-    <div class="slot" id="slot1">1</div>
-    <div class="slot" id="slot2">2</div>
-    <div class="slot" id="slot3">3</div>
+    <div class="slot" id="slot1"><i class="fas fa-gem"></i></div> <!-- Драгоценный камень -->
+    <div class="slot" id="slot2"><i class="fas fa-apple-alt"></i></div> <!-- Вишня (как фрукт) -->
+    <div class="slot" id="slot3"><i class="fas fa-star"></i></div> <!-- Звезда -->
   </div>
   <button id="spin-button">Вращать</button>
 </div>
 
 <!-- Popup для выигрыша или проигрыша -->
-<div id="popup" class="popup">
+<div class="popup" id="popup">
   <div class="popup-content">
     <span id="popup-message"></span>
-    <button id="close-popup">Закрыть</button>
   </div>
 </div>
 
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
